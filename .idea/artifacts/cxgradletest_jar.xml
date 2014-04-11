@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="cxgradletest:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/cxgradletest_jar</output-path>
+    <root id="archive" name="cxgradletest.jar">
+      <element id="module-output" name="cxgradletest" />
+      <element id="module-output" name="test1" />
+    </root>
+  </artifact>
+</component>

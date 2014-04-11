@@ -1,0 +1,127 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'gradle-one-jar'
+
+sourceCompatibility = 1.5
+version = '1.0'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile(
+            "com.google.guava:guava:13.0.1" ,
+            "commons-logging:commons-logging:1.1.3" ,
+            "commons-logging:commons-logging-api:1.1" ,
+            "commons-beanutils:commons-beanutils:1.8.3",
+            "commons-lang:commons-lang:2.6",
+            "commons-collections:commons-collections:3.2.1",
+            "org.springframework:spring-context:3.2.3.RELEASE" ,
+            "org.springframework:spring-test:3.2.3.RELEASE",
+            "org.springframework:spring-core:3.2.3.RELEASE",
+            "org.springframework:spring-beans:3.2.3.RELEASE",
+            "org.springframework:spring-web:3.2.3.RELEASE",
+            "org.springframework:spring-webmvc:3.2.3.RELEASE" ,
+            "org.springframework:spring-aspects:3.2.3.RELEASE",
+            "org.springframework:spring-jdbc:3.2.3.RELEASE",
+            "org.springframework:spring-tx:3.2.3.RELEASE",
+            "org.springframework:spring-expression:3.2.3.RELEASE",
+            project(':test1'),
+           // fileTree(dir: "libs", include: '*.jar')
+    )
+    runtime(
+            "log4j:log4j:1.2.17"
+    )
+   // providedCompile (
+
+   // )
+
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.github.rholder:gradle-one-jar:1.0.4'
+    }
+
+}
+
+tasks.withType(Compile) {
+    options.encoding = "UTF-8"
+}
+
+/*task buildTest1(){
+    println("buildtest1Jar");
+}
+
+task getJar(dependsOn: buildTest1){
+   println("copytest1Jar");
+    copy{
+        from "test1\\build\\libs"
+        into "libs"
+    }
+}*/
+
+task awesomeFunJar(overwrite: true,type: OneJar) {
+    mainClass = 'com.Test'
+}
+
+/**
+ *
+ * jar依赖配置方法
+ * dependencies {
+     compile(
+            'org.hibernate:hibernate-core:3.6.7.Final',
+             'org.springframework:spring-context:3.1.4.RELEASE',
+            fileTree(dir: "${rootProject.projectDir}/lib", include: '*.jar')    //本地文件
+ )
+ }
+ *
+ *
+ *项目之间依赖
+ * dependencies {
+     compile(
+            'org.hibernate:hibernate-core:3.6.7.Final',
+              project(':core')
+ )
+ }
+
+ *
+ *
+ *构建脚本时的依赖
+ * 除了项目需要依赖之外，构建脚本本身也可以有自己的依赖。当使用一个非Gradle官方提供的插件时，就需要在构建脚本里指定其依赖，当然还需要指定该插件的Repository。在Gradle中，使用buildscript块为构建脚本配置依赖。
+ 比如在项目中使用cucumber-JVM作为项目BDD工具，而Gradle官方没有提供它的插件，好在开源社区有人提供cucumber的插件。在构建脚本中添加如下代码：
+ * buildscript {
+     repositories {
+         mavenCentral()
+     }
+     dependencies {
+         classpath "gradle-cucumber-plugin:gradle-cucumber-plugin:0.2"
+     }
+ }
+ apply plugin: com.excella.gradle.cucumber.CucumberPlugin
+
+
+ *
+ *多配置文件依赖
+ * apply from: "jetty.gradle"
+ apply from: "jboss.gradle"
+ *
+ *
+ *更默认的目录结构
+ * //目录结构
+ sourceSets {
+ main {
+ java {
+ srcDir 'src/cmes/java';
+ exclude 'com/dhcc/cmes/base/**';
+ }
+ }
+ }
+ * */
