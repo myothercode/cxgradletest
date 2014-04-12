@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'gradle-one-jar'
 
+
 sourceCompatibility = 1.5
 version = '1.0'
 
@@ -28,11 +29,12 @@ dependencies {
             "org.springframework:spring-jdbc:3.2.3.RELEASE",
             "org.springframework:spring-tx:3.2.3.RELEASE",
             "org.springframework:spring-expression:3.2.3.RELEASE",
+            "log4j:log4j:1.2.17",
             project(':test1'),
            // fileTree(dir: "libs", include: '*.jar')
     )
     runtime(
-            "log4j:log4j:1.2.17"
+
     )
    // providedCompile (
 

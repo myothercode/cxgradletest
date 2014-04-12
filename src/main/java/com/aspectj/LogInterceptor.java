@@ -2,6 +2,7 @@ package com.aspectj;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.aop.ThrowsAdvice;
@@ -17,14 +18,16 @@ import java.lang.reflect.Method;
 @Aspect
 public class LogInterceptor implements ThrowsAdvice {
     private static final Log logger = LogFactory.getLog(LogInterceptor.class);
-    public static final String EDP = "execution(* *(..))";//定义一个切入点表达式
+    //public static final String EDP = "execution(* *(..))";//定义一个切入点表达式
+    @Pointcut("execution(* *(..))")
+    public void EDP(){}
 
-    @Before(EDP) //Before通知
+   // @Before("EDP()") //Before通知
     public void logBefore() {
         System.out.println("方法开始==============");
     }
 
-    @Around(EDP) //Before通知
+   // @Around("EDP()") //Before通知
     public Object logAround(ProceedingJoinPoint joinPoint) {
         Object[] args = joinPoint.getArgs();
         Object obj=null;
@@ -38,15 +41,18 @@ public class LogInterceptor implements ThrowsAdvice {
         return obj;
     }
 
-    @AfterThrowing(EDP)
-    public void logException(Method method, Object[] args, Object target,RuntimeException  throwable){
-        System.out.println("产生异常的方法名称：  " + method.getName());
+    @AfterThrowing(pointcut="EDP()",throwing="ex")
+    public void logException(JoinPoint jp,Throwable ex ){
+        /*System.out.println("产生异常的方法名称：  " + method.getName());
         for(Object o:args){
             System.out.println("方法的参数：   " + o.toString());
         }
         System.out.println("代理对象：   " + target.getClass().getName());
         System.out.println("抛出的异常:    " + throwable.getMessage()+">>>>>>>"
                 + throwable.getCause());
-        System.out.println("异常详细信息：　　　"+throwable.fillInStackTrace());
+        System.out.println("异常详细信息：　　　"+throwable.fillInStackTrace());*/
+        Object l[]=jp.getArgs();  //参数
+        String aa=jp.getSignature().getName();//方法名
+        logger.error( " run " + aa + " Throw...." + ex,ex);
     }
 }
