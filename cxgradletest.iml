@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" external.system.module.group="" external.system.module.version="1.0" type="JAVA_MODULE" version="4">
+<module external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/test1" external.system.id="GRADLE" external.system.module.group="" external.system.module.version="1.1" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/spring/applicationContext.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
+  </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <output url="file://$MODULE_DIR$/build/classes" />
+    <output-test url="file://$MODULE_DIR$/out/test/cxgradletest" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
@@ -33,10 +44,9 @@
     <orderEntry type="library" exported="" name="Gradle: spring-aop-3.2.3.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="Gradle: aspectjweaver-1.7.2" level="project" />
     <orderEntry type="library" exported="" name="Gradle: spring-context-support-3.2.3.RELEASE" level="project" />
-    <orderEntry type="library" scope="TEST" name="Gradle: log4j-1.2.17" level="project" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="Gradle: log4j-1.2.17" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit-4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: hamcrest-core-1.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: log4j-1.2.17" level="project" />
   </component>
 </module>
 

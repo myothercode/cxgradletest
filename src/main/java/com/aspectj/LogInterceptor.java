@@ -51,6 +51,7 @@ public class LogInterceptor implements ThrowsAdvice {
         System.out.println("抛出的异常:    " + throwable.getMessage()+">>>>>>>"
                 + throwable.getCause());
         System.out.println("异常详细信息：　　　"+throwable.fillInStackTrace());*/
+
         Object l[]=jp.getArgs();  //参数
         String aa=jp.getSignature().getName();//方法名
         logger.error( " run " + aa + " Throw...." + ex,ex);
