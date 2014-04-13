@@ -19,7 +19,8 @@ import java.lang.reflect.Method;
 public class LogInterceptor implements ThrowsAdvice {
     private static final Log logger = LogFactory.getLog(LogInterceptor.class);
     //public static final String EDP = "execution(* *(..))";//定义一个切入点表达式
-    @Pointcut("execution(* *(..))")
+    //@Pointcut("execution(* *(..))")
+    @Pointcut("execution(* com..*.*(..))")
     public void EDP(){}
 
    // @Before("EDP()") //Before通知
