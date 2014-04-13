@@ -44,6 +44,7 @@ public class LogInterceptor implements ThrowsAdvice {
 
     @AfterThrowing(pointcut="EDP()",throwing="ex")
     public void logException(JoinPoint jp,Throwable ex ){
+        //public void logException(JoinPoint jp,Exception ex ){
         /*System.out.println("产生异常的方法名称：  " + method.getName());
         for(Object o:args){
             System.out.println("方法的参数：   " + o.toString());
