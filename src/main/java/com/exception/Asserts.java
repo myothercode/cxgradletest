@@ -3,7 +3,7 @@ package com.exception;
 
 /**
  * 断言
- * Created by wula on 2014/4/13.
+ * Created by wula on 2014/4/13.bb
  */
 public class Asserts {
     public static void assertTrue(boolean condition, String errorMessage) {
